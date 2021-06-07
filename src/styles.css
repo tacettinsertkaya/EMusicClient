@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.mt-1{
+    margin-top: 1% !important;
+}
+
+.mb-1{
+    margin-bottom: 1% !important;
+}
+
+.pr-5{
+    padding-right: 5px;
+}
+
+
+.pr-10{
+    padding-right: 10px;
+}

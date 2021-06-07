@@ -1,0 +1,27 @@
+<form *ngIf="signinForm" [formGroup]="signinForm" (ngSubmit)="signIn()">
+    <h1 class="h3 mb-3 fw-normal mb-5">Sign In</h1>
+
+    <div class="form-floating  mb-1">
+        <input type="email" class="form-control" formControlName="email" id="floatingInput"
+            placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+        <p class="text-start text-danger" *ngIf="signinForm.get('email')?.errors?.required && (signinForm.controls.email?.dirty || signinForm.controls.email.touched)">
+            Email required
+        </p>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control"  formControlName="password"  id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+        <p  class="text-start text-danger"
+            *ngIf="signinForm.controls['password'].hasError('required') && (signinForm.controls.password?.dirty || signinForm.controls.password.touched)">
+            Password required
+        </p>
+
+    </div>
+
+   <p class="text-center text-danger m-1" *ngIf="errorMessage">{{errorMessage}}</p>
+   
+    <button class="w-100 btn btn-lg btn-primary mt-5" type="submit">Sign in</button>
+    <a [routerLink]="['/auth/signup']" class="w-100 btn btn-lg  mt-1">Sign up</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+</form>

@@ -1,0 +1,84 @@
+<form *ngIf="signUpForm" [formGroup]="signUpForm" (ngSubmit)="saveUser()">
+  <h1 class="h3 mb-3 fw-normal mb-5">Sign Up</h1>
+
+
+  <div class="form-floating mb-1">
+    <input class="form-control" id="floatingInput" formControlName="name" placeholder="Name" />
+    <label for="floatingInput">Name</label>
+    <div
+      *ngIf="(signUpForm.get('name')?.invalid && ( signUpForm.get('name')?.touched) || signUpForm.get('name')?.dirty)">
+      <div class="text-danger mt-1" *ngIf="signUpForm.get('name')?.errors?.required ">
+        <p class="text-start"> Name required</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-floating mb-1">
+    <input class="form-control " formControlName="surname" placeholder="Surname" />
+    <label for="floatingInput">Surname</label>
+    <div
+      *ngIf="(signUpForm.get('surname')?.invalid && ( signUpForm.get('surname')?.touched) || signUpForm.get('surname')?.dirty)">
+      <div class="text-danger mt-1" *ngIf="signUpForm.get('surname')?.errors?.required ">
+        <p class="text-start">Surname required</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-floating mb-1">
+    <input class="form-control " formControlName="email" placeholder="Email" />
+    <label for="floatingInput">Email</label>
+    <div
+      *ngIf="(signUpForm.get('email')?.invalid && ( signUpForm.get('email')?.touched) || signUpForm.get('email')?.dirty)">
+      <div class="text-danger mt-1" *ngIf="signUpForm.get('email')?.errors?.required ">
+        <p class="text-start">Email required</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-floating mb-1">
+    <input class="form-control " type="password" formControlName="password" placeholder="Password" />
+    <label for="floatingInput">Password</label>
+    <div *ngIf="signUpForm.controls.password?.dirty || signUpForm.controls.password?.touched">
+      <div class="row validation-control">
+        <div class="col-md-12">
+          <p class="text-start"
+            [ngClass]="signUpForm.controls['password'].hasError('required') || signUpForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+
+
+            Must contain at least 1 number
+          </p>
+          <p class="text-start"
+            [ngClass]="signUpForm.controls['password'].hasError('required') || signUpForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+
+          </p>
+          <p class="text-start"
+            [ngClass]="signUpForm.controls['password'].hasError('required') || signUpForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+            Must contain at least 1 capital letter
+          </p>
+
+          <p class="text-start"
+            [ngClass]="signUpForm.controls['password'].hasError('required') || signUpForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+
+            Must contain at least 1 lowercase letter
+          </p>
+          <p class="text-start"
+            [ngClass]="signUpForm.controls['password'].hasError('required') || signUpForm.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+
+            Must contain at least 1 special character
+          </p>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+    <button class="w-100 btn btn-lg btn-primary mt-5" type="submit">Sign Up</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+
+
+</form>

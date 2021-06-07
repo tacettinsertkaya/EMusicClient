@@ -1,0 +1,50 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Best '80s songs</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc.
+        Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col" *ngFor="let userMusic of musicList">
+        <div class="card " >
+          <a [routerLink]="['/detail',userMusic.music.id]">
+          <img class="card-img-top" [src]="userMusic.music.coverImage" alt="Card image cap">
+        </a>
+          <div class="card-body">
+            <p class="card-text">{{userMusic.music.name}}  <span class="text-muted float-end">{{userMusic.music.year}}</span>
+          </p>
+            <div class="d-flex justify-content-between align-items-end">
+              <div class="btn-group">
+                <a [routerLink]="['/detail',userMusic.music.id]" class="btn btn-primary">Detail</a> 
+              </div>
+              <div class="btn-group">
+                <span class="m-1 " [ngClass]="{'text-primary':userMusic.isViewed}" *ngIf="userMusic.isViewed"  ><i class="fa fa-eye"></i></span> 
+                <span class="m-1 "  [ngClass]="{'text-danger':userMusic.isFavorite}" *ngIf="isLogged()" 
+                  (click)="addFavorite(userMusic)"  ><i class="fa fa-heart"></i></span> 
+                <span class="m-1 " [ngClass]="{'text-success':userMusic.isPurchashing}" *ngIf="userMusic.isPurchashing" ><i class="fa fa-shopping-bag"></i></span> 
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  
+
+
+
+  </div>
+</div>

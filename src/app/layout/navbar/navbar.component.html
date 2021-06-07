@@ -1,0 +1,20 @@
+    
+<header>
+    
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <span class="pr-5"><i class="fa fa-compact-disc"></i></span>
+          <strong>Album</strong>
+        </a>
+        <div class="text-end" *ngIf="!isLogged()">
+          <a [routerLink]="['/auth/signin']" class="btn btn-outline-light me-2">Login</a>
+          <a [routerLink]="['/auth/signup']" class="btn btn-warning">Sign-up</a>
+        </div>
+        <div class="text-end" *ngIf="isLogged()">
+          <span class="text-light pr-10">Welcome, {{userName()}}</span>
+          <button type="button" (click)="logout()" class="btn btn-warning">Logout</button>
+        </div>
+      </div>
+    </div>
+  </header>
