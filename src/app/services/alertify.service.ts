@@ -32,7 +32,7 @@ export class AlertifyService {
 
     warning(msg:string){
         swal.fire({
-            title: "Uyarı",
+            title: "Warning",
             text:msg,
             icon: 'warning',
             timer:2000
