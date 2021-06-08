@@ -4,4 +4,5 @@ export class MusicListFilter extends PaginationFilter{
     name:string='';
     ownerFullName:string='';
     userId:string='';
+    searchParams:string='';
 }

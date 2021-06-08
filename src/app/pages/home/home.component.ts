@@ -1,4 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
+import { debounce } from 'lodash';
 import { UserMusicDto } from 'src/app/models/dto/music-dto';
 import { Music } from 'src/app/models/entity/music';
 import { MusicListFilter } from 'src/app/models/filter/music/music-list-filter';
@@ -14,6 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent implements OnInit {
 
   musicList:Array<UserMusicDto>=[];
+  filter = new MusicListFilter();
 
   constructor(
     private musicService:MusicService,
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
     private _ngZone: NgZone
   ) {
     this.getNotifSubjectEvents();
-
+    this.updateFilter = debounce(this.updateFilter, 1000)
    }
 
   ngOnInit(): void {
@@ -35,10 +37,36 @@ export class HomeComponent implements OnInit {
       this._ngZone.run(() => {
       
 
-          alert("test");
   
       });
     });
+  }
+
+  updateFilterFocus(event: any) {
+    const val = event.target.value.toLowerCase();
+     console.log("val",val);
+    this.filter.pageNumber = 1;
+    this.filter.pageSize = 10;
+    this.filter.searchParams=val;
+
+    this.getAllMusicByFilter(this.filter);
+
+   
+  }
+ 
+  updateFilter(event: any) {
+
+    const val = event.target.value.toLowerCase();
+    console.log("val2",val);
+    let filter = new MusicListFilter();
+    filter.pageNumber = 1;
+    filter.pageSize = 10;
+    filter.searchParams=val;
+
+    this.getAllMusicByFilter(filter);
+
+
+  
   }
 
 
