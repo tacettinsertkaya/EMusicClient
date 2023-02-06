@@ -74,14 +74,9 @@ export class SignupComponent implements OnInit {
     }
     if (this.signUpForm?.valid) {
         let data = Object.assign({}, this.signUpForm.value);
-        
+        this.user=data;
         this.user.userName=data.email;
-        this.user.name=data.name;
-        this.user.surname=data.surname;
-        this.user.email=data.email;
-        this.user.password=data.password;
-        this.user.statu=data.statu;
-    
+       
 
         this.userService
           .register(this.user)

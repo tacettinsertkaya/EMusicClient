@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
 
   updateFilterFocus(event: any) {
     const val = event.target.value.toLowerCase();
-     console.log("val",val);
     this.filter.pageNumber = 1;
     this.filter.pageSize = 10;
     this.filter.searchParams=val;
@@ -57,7 +56,6 @@ export class HomeComponent implements OnInit {
   updateFilter(event: any) {
 
     const val = event.target.value.toLowerCase();
-    console.log("val2",val);
     let filter = new MusicListFilter();
     filter.pageNumber = 1;
     filter.pageSize = 10;

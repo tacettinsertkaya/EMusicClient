@@ -55,7 +55,6 @@ private async startConnection(): Promise<void> {
 
   private getNotif(): void {
     this._hubConnection.on("notifReceiver", (data: any) => {
-        console.log("data",data);
         this.alertifyService.success("Succeed",data);
     });
   }
